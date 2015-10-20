@@ -44,3 +44,31 @@ void boom()
   digitalWrite(A2,HIGH);
   while(1);
 }
+
+void boon()
+{
+  tone(A1,3000,150);
+  delay(200);
+  tone(A1,651,250);
+  delay(250);
+  tone(A1,2500,250);
+  delay(250);
+  tone(A1,651,250);
+  delay(250);
+  tone(A1,2200,600);
+  delay(500);
+  tone(A1,1321,250);
+  delay(250);
+  tone(A1,3000,500);
+  delay(500);
+  tone(A1,2200,600);
+  delay(500);
+  tone(A1,1300,250);
+  delay(250);
+  tone(A1,3000,500);
+  delay(500);
+  noTone(A1);
+  Serial.println("BOON");
+  digitalWrite(A2,HIGH);
+  while(1);
+}
