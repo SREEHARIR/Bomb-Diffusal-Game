@@ -23,3 +23,24 @@ void setup()
     Serial.println(tho[i]);}
 
 }
+
+
+
+void boom()
+{
+  for(int i=0;i<4;i++)
+  {tone(A1,665,300);
+  delay(100);
+  tone(A1,547,300);
+  delay(100);
+  tone(A1,438,300);
+  delay(100);
+  tone(A1,620,300);
+  delay(100);
+  tone(A1,701,100);
+  delay(100);}
+  noTone(A1);
+  Serial.println("BOOM");
+  digitalWrite(A2,HIGH);
+  while(1);
+}
