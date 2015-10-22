@@ -23,9 +23,85 @@ void setup()
     Serial.println(tho[i]);}
 
 }
+void loop(){
+  int i,j;
 
+  Serial.println("pass over");    
 
-
+  for(i=2;i<12;i++)
+  ipni[i-2]=digitalRead(i);
+  
+  for(i=0;i<10;i++){
+    Serial.print(*ptrt++);
+    Serial.print(tho[i]);
+    Serial.print(*ptri++);
+    Serial.print(ipni[i]);
+    Serial.print(*ptrf++);
+    Serial.println(flg[i]);
+    
+  }
+  ptrt-=10;
+  ptri-=10;
+  ptrf-=10;
+  
+  clockin=digitalRead(A0);
+  
+  for(i=0;i<10;i++);{
+  if(clockin==HIGH){
+    Serial.println("time over");
+  boom();}
+ 
+  if(*(ptri+4)==1){      //ptr+8==1               //2,6,7,10 cheat
+    flg[1]=1;     
+    Serial.println("ptri+4"); }                     //flg[1]=1
+  if(*(ptri+8)==1)  {                          //prti+16==1
+    flg[3]=1;     
+    Serial.println("ptri+8");  }                      //flg[3]=1
+  if(*(ptri+0)==1)    {                         //ptri+0==1      
+    flg[0]=1;         
+    Serial.println("ptri+0");}                 //flg[0]=1
+  if(*(ptri+5)==1)      {                      //ptri+10==1
+    flg[2]=1;           
+    Serial.println("ptri+5");}                  // flg[2]=1
+     
+  if(*(ptri+1)==1){                //ptr+2==1              
+    flg[4]=1;     
+    Serial.println("ptri+1");}                   //flg[1]=1
+  if(*(ptri+2)==1)  {                      //prti+4==1
+    flg[5]=1;  
+    Serial.println("ptri+2");     }             //flg[3]=1
+  if(*(ptri+3)==1)    {            //ptri+6==1      
+    flg[6]=1;  
+    Serial.println("ptri+3");       }             //flg[0]=1
+  if(*(ptri+6)==1)      {            //ptri+12==1
+    flg[7]=1;    
+    Serial.println("ptri+6");       }     // flg[2]=1
+  if(*(ptri+7)==1){                  //ptri+14==1
+    flg[8]=1;  
+    Serial.println("ptri+7");   }           // flg[2]=1
+  if(*(ptri+9)==1)  {                //ptri+18==1
+    flg[9]=1;   
+    Serial.println("ptri+9");    }         // flg[2]=1
+    //*/
+//  ptri+=(i*2/i-2*tho[5]);
+  
+  }
+  
+  chk=0;
+  for(i=0;i<10;i++){
+    for(j=0;(i+j)<10;j++)
+  if(*(ptrf+j+1)>(*ptrf)){
+  Serial.println("flg down");
+  boom();}
+  if(*ptrt++==*ptri++)
+  chk++;
+  if(chk==10)
+  boon();
+  ptrf++;}
+  ptrt-=10;
+  ptri-=10;
+  ptrf-=10;
+}
 void boom()
 {
   for(int i=0;i<4;i++)
@@ -44,7 +120,6 @@ void boom()
   digitalWrite(A2,HIGH);
   while(1);
 }
-
 void boon()
 {
   tone(A1,3000,150);
